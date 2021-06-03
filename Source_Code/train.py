@@ -73,27 +73,29 @@ def get_model():
 
 
 if __name__ == '__main__':
-    save_data(raw_folder)
+
+    # Save data to train_data file.
+    # save_data(raw_folder)
 
     """
     Phần sau train model trên Google Colab
     """
-    # (x_data, y_data) = load_data()
-    # x_train, x_test, y_train, y_test = train_test_split(x_data, y_data, test_size=0.2, random_state=100)
-    #
-    # model = get_model()
-    # file_path = "weight--{epoch:.02d}--{val_accuracy:.2f}.hdf5"
-    # checkpoint = ModelCheckpoint(file_path, monitor="val_accuracy", verbose=1, save_best_only=True, mode='max')
-    # callbacks_list = [checkpoint]
-    #
-    # # avg = ImageDataGenerator(rotation_range=20, zoom_range=0.1,
-    # #                          rescale=1. / 255, width_shift_range=0.1,
-    # #                          height_shift_range=0.1, horizontal_flip=True,
-    # #                          brightness_range=[0.2, 1.5], fill_mode='nearest')
-    #
-    # my_model = model.fit(x_train, y_train, batch_size=64,
-    #                      epochs=10,
-    #                      validation_data=(x_test, y_test),
-    #                      callbacks=callbacks_list)
-    #
-    # model.save("NHANDANGSOXE.h5")
+    (x_data, y_data) = load_data()
+    x_train, x_test, y_train, y_test = train_test_split(x_data, y_data, test_size=0.2, random_state=100)
+
+    model = get_model()
+    file_path = "weight--{epoch:.02d}--{val_accuracy:.2f}.hdf5"
+    checkpoint = ModelCheckpoint(file_path, monitor="val_accuracy", verbose=1, save_best_only=True, mode='max')
+    callbacks_list = [checkpoint]
+
+    # avg = ImageDataGenerator(rotation_range=20, zoom_range=0.1,
+    #                          rescale=1. / 255, width_shift_range=0.1,
+    #                          height_shift_range=0.1, horizontal_flip=True,
+    #                          brightness_range=[0.2, 1.5], fill_mode='nearest')
+
+    my_model = model.fit(x_train, y_train, batch_size=64,
+                         epochs=10,
+                         validation_data=(x_test, y_test),
+                         callbacks=callbacks_list)
+
+    model.save("NHANDANGSOXE.h5")
