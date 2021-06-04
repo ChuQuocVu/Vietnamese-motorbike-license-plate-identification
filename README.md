@@ -16,3 +16,6 @@
   * Sometime confused between "T" and "1", "4" and "Z".
   * Model won't work well when the photoes are too dark.
   
+4. Result:
+  ![image](https://user-images.githubusercontent.com/85300544/120797185-e1776880-c565-11eb-8d9f-271b3312dfd4.png)
+
